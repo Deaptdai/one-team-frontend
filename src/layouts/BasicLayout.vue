@@ -6,32 +6,28 @@
     </van-nav-bar>
 
     <div id="content">
-        <template v-if="active === 'index'">
-            <index />
-        </template>
-
-        <template v-if="active === 'team'">
-            <team />
-        </template>
+        <router-view />
     </div>
 
-    <van-tabbar v-model="active" @change="onChange">
-        <van-tabbar-item icon="home-o" name="index">主页</van-tabbar-item>
-        <van-tabbar-item icon="friends-o" name="team">队伍</van-tabbar-item>
-        <van-tabbar-item icon="setting-o" name="user">个人</van-tabbar-item>
+    <van-tabbar @change="onChange" route>
+        <van-tabbar-item icon="home-o" name="index" to="/">主页</van-tabbar-item>
+        <van-tabbar-item icon="friends-o" name="team" to="/team">队伍</van-tabbar-item>
+        <van-tabbar-item icon="setting-o" name="user" to="/user">个人</van-tabbar-item>
     </van-tabbar>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { showToast } from 'vant';
-import Index from '../pages/index.vue';
-import Team from '../pages/team.vue';
+import router from '../config/router';
 
 
-const onClickLeft = () => alert('返回');
-const onClickRight = () => alert('搜索');
-const active = ref("index");//默认标签为index值的item高亮
+const onClickLeft = () => {
+    router.push('/');
+};;
+const onClickRight = () => {
+    router.push('/search');
+};
 const onChange = (index) => showToast(`标签 ${index}`);
 
 </script>
