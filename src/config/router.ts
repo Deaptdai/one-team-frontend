@@ -1,9 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import IndexVue from '../pages/Index.vue'
-import TeamVue from '../pages/Team.vue'
-import UserVue from '../pages/User.vue'
-import SearchVue from '../pages/Search.vue'
+import TeamVue from '../pages/TeamPage.vue'
+import UserVue from '../pages/UserPage.vue'
+import SearchVue from '../pages/SearchPage.vue'
+import UserEditVue from '../pages/UserEditPage.vue'
 
 const routes = [
     {
@@ -21,7 +22,11 @@ const routes = [
     {
         path: '/search',
         component: SearchVue
-    }
+    },
+    {
+        path: '/user/edit',
+        component: UserEditVue
+    },
 ]
 
 const router = createRouter({

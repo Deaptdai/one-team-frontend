@@ -23,12 +23,12 @@ import router from '../config/router';
 
 
 const onClickLeft = () => {
-    router.push('/');
+    router.back();
 };;
 const onClickRight = () => {
     router.push('/search');
 };
-const onChange = (index) => showToast(`标签 ${index}`);
+
 
 </script>
 
