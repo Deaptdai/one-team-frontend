@@ -12,15 +12,19 @@
         </van-col>
     </van-row>
     <van-divider content-position="left">选择标签</van-divider>
-    
+
     <van-tree-select v-model:active-id="activeIds" v-model:main-active-index="activeIndex" :items="tagList" />
 
+    <div style="padding: 20px;">
+        <van-button block type="primary" @click="doSearchResult">搜索</van-button>
+    </div>
 
 
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import router from '../config/router';
 
 const searchText = ref('');
 
@@ -76,6 +80,15 @@ const activeIndex = ref(0);
 //移除标签
 const doClose = (tag) => {
     activeIds.value = activeIds.value.filter((item) => item !== tag);
+};
+
+const doSearchResult = () => {
+    router.push({
+        path: '/user/list',
+        query: {
+            tags: activeIds.value,
+        }
+    });
 };
 
 </script>

@@ -19,6 +19,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
+import myAxios from '../plugins/myAxios';
+import router from '../config/router';
+import { showFailToast, showSuccessToast } from 'vant';
+import { getCurrentUser } from '../services/user';
+import { setCurrentUserState } from '../states/user';
 
 const route = useRoute();
 const editUser = ref({
@@ -27,9 +32,32 @@ const editUser = ref({
     editName: route.query.editName as string || ''
 })
 
-const onSubmit = (values :any) => {
-    // TODO 把 editKey，currentValue, editName 提交到给后端
-    console.log('提交的值', values);
+const onSubmit = async () => {
+    const currentUser = await getCurrentUser();
+
+    if(!currentUser) {
+        showFailToast('用户未登录');
+        return ;
+    }
+
+    const res = await myAxios.post('/user/update', {
+        'id': currentUser.id, 
+        [editUser.value.editKey]: editUser.value.currentValue,
+    })
+
+    if (res.data.code === 200) {
+        // 提交成功
+        showSuccessToast('提交成功');
+        
+        // TODO 跳转到用户详情页
+        const { editKey, currentValue } = editUser.value;
+        (currentUser as any)[editKey] = currentValue;
+        setCurrentUserState(currentUser);
+        router.back();
+    } else { 
+        // 提交失败
+        showFailToast('提交失败');
+    }
 };
 
 </script>

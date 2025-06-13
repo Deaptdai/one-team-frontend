@@ -29,7 +29,11 @@ const onClickRight = () => {
     router.push('/search');
 };
 
-
+const onChange = () => { };
 </script>
 
-<style scoped></style>
+<style scoped>
+#content {
+    padding-bottom: 50px;
+}
+</style>
