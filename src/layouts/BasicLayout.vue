@@ -1,5 +1,5 @@
 <template>
-    <van-nav-bar title="标题" left-arrow @click-left="onClickLeft" @click-right="onClickRight">
+    <van-nav-bar title="一个队伍" left-arrow @click-left="onClickLeft" @click-right="onClickRight">
         <template #right>
             <van-icon name="search" size="18" />
         </template>

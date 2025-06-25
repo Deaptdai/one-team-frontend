@@ -8,6 +8,7 @@ import UserEditVue from '../pages/UserEditPage.vue'
 import SearchResultVue from '../pages/SearchResultPage.vue'
 import LoginVue from '../pages/LoginPage.vue'
 import myAxios from '../plugins/myAxios'
+import TeamAddPage from '../pages/TeamAddPage.vue'
 
 const routes = [
     {
@@ -38,7 +39,11 @@ const routes = [
         path: '/user/login',
         component: LoginVue,
         meta: { layout: 'none' }
-    }
+    }, 
+    {
+        path: '/team/add',
+        component: TeamAddPage
+    },
 ]
 
 const router = createRouter({

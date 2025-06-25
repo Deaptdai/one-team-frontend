@@ -8,6 +8,7 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import myAxios from '../plugins/myAxios';
 import qs from 'qs';
+import UserCardList from '../components/UserCardList.vue';
 
 const route = useRoute();
 

@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
+import type { UserType } from '../models/user';
 
 interface UserCardListProps {
     userList: UserType[];
