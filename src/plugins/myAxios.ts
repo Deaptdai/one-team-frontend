@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const myAxios = axios.create({
     baseURL: 'http://localhost:8080/api',
-    timeout: 10000,
+    timeout: 40000,
     withCredentials: true, // 允许携带cookie
-});
+})
 
 // 添加请求拦截器
 myAxios.interceptors.request.use(function (config) {
